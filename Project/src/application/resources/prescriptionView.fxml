@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="564.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.PrescriptionController">
+   <children>
+      <Label fx:id="prescriptionsLabel" layoutX="169.0" layoutY="58.0" text="Current Prescriptions:" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="90.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ScrollPane hbarPolicy="NEVER" layoutX="129.0" layoutY="151.0" prefHeight="260.0" prefWidth="500.0" vbarPolicy="ALWAYS" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="130.0">
+         <content>
+            <ListView prefHeight="257.0" prefWidth="484.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

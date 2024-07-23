@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="visitAnchorPane" prefHeight="564.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.VisitController">
+   <children>
+      <Button fx:id="scheduleAppointmentButton" layoutX="336.0" layoutY="499.0" mnemonicParsing="false" text="Schedule Appointment" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="230.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Label fx:id="upcomingVisitsLabel" layoutX="92.0" layoutY="54.0" text="Upcoming Visits:" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="30.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="pastVisitsLabel" layoutX="273.0" layoutY="262.0" text="Past Visits:" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="260.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ScrollPane fx:id="upcomingScrollpane" hbarPolicy="NEVER" layoutX="108.0" layoutY="118.0" prefHeight="160.0" prefWidth="500.0" vbarPolicy="ALWAYS" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="65.0">
+         <content>
+            <ListView fx:id="upcomingListView" prefHeight="159.0" prefWidth="483.0" />
+         </content>
+      </ScrollPane>
+      <ScrollPane fx:id="pastScrollpane" hbarPolicy="NEVER" layoutX="68.0" layoutY="295.0" prefHeight="160.0" prefWidth="500.0" vbarPolicy="ALWAYS" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="290.0">
+         <content>
+            <ListView fx:id="pastListview" prefHeight="159.0" prefWidth="483.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

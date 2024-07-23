@@ -16,7 +16,7 @@ public class UserInterface extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("UserInterface.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("resources/UserInterface.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
