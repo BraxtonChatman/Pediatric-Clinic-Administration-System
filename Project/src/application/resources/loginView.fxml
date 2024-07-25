@@ -11,17 +11,17 @@
    <children>
       <AnchorPane layoutX="-2.0" prefHeight="299.0" prefWidth="330.0">
          <children>
-            <Button fx:id="loginButton" layoutX="208.0" layoutY="224.0" mnemonicParsing="false" onAction="#loginButtonHandler" text="Log In" />
+            <Button fx:id="signupButton" layoutX="258.0" layoutY="14.0" mnemonicParsing="false" onAction="#signupButtonHandler" text="Sign Up" />
             <Label layoutX="37.0" layoutY="58.0" text="Welcome to Clinic Administration System">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <PasswordField fx:id="passwordField" layoutX="58.0" layoutY="189.0" prefHeight="25.0" prefWidth="200.0" />
-            <TextField fx:id="usernameField" layoutX="58.0" layoutY="124.0" prefHeight="25.0" prefWidth="200.0" />
-            <Button fx:id="signupButton" layoutX="258.0" layoutY="14.0" mnemonicParsing="false" onAction="#signupButtonHandler" text="Sign Up" />
             <Label layoutX="58.0" layoutY="106.0" text="Username:" />
+            <TextField fx:id="usernameField" layoutX="58.0" layoutY="124.0" prefHeight="25.0" prefWidth="200.0" />
             <Label layoutX="60.0" layoutY="171.0" text="Password:" />
+            <PasswordField fx:id="passwordField" layoutX="58.0" layoutY="189.0" prefHeight="25.0" prefWidth="200.0" />
+            <Button fx:id="loginButton" layoutX="208.0" layoutY="224.0" mnemonicParsing="false" onAction="#loginButtonHandler" text="Log In" />
          </children>
       </AnchorPane>
    </children>

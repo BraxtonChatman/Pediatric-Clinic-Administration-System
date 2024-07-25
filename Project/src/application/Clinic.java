@@ -65,7 +65,6 @@ public class Clinic {
 			// if directories exist, read their data
 			if(clinicExists && providersExists && patientsExists && messagesExists && visitsExists && loginsExists) {
 				// get list of all provider files and read them to Clinic.providers
-				
 				List<Path> providerFiles = Files.list(providerAccountPath).filter(Files::isRegularFile).collect(Collectors.toList());				
 				for(Path fileToRead : providerFiles) 
 					this.readProvider(fileToRead);
@@ -100,7 +99,7 @@ public class Clinic {
 				Files.createDirectories(visitPath);
 				Files.createDirectories(loginPath);
 				System.out.println("Directories created successfully at " + clinicPath.toAbsolutePath());
-			}
+			}			
 		}
 		catch (IOException e) {
 			System.err.println("Failed to create directories: " + e.getMessage());
@@ -296,7 +295,7 @@ public class Clinic {
 		try {
 			// read indicated file to string
 			String fileData = Files.readString(fileToRead, StandardCharsets.UTF_8);
-			
+
 			// parse and store string into ProviderAccount
 			String[] dataValues = fileData.split("\\n");
 			String userId = dataValues[0];
@@ -537,7 +536,6 @@ public class Clinic {
 	 * @param: password represents the password of the account the user is trying to sign into
 	 */
 	public boolean login(String userId, String password) {
-		
 		boolean successful = false;
 		
 		// iterate through list of valid logins

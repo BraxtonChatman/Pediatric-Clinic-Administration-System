@@ -1,5 +1,6 @@
 package application.controllers;
 
+import application.Clinic;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
@@ -10,6 +11,8 @@ import javafx.scene.layout.AnchorPane;
 
 public class UserInterfaceController {
 
+	private Clinic mainClinic;
+	
 	@FXML
 	private TabPane landingPane;
 	
@@ -25,25 +28,53 @@ public class UserInterfaceController {
 	@FXML
 	private Tab prescriptionsTab;
 	
-	@FXML
-	public void initialize() {
-		loadTabContent();
+//	@FXML
+//	public void initialize() {
+//		loadTabContent();
+//	}
+	
+	public void setClinic(Clinic newClinic) {
+		this.mainClinic = newClinic;
 	}
 	
-	private void loadTabContent() {
-		
+	public void loadTabContent() {
 		try {
-			AnchorPane accountTabContent = FXMLLoader.load(getClass().getResource("/application/resources/patientAccountView.fxml"));
-			accountTab.setContent(accountTabContent);
+			landingPane.getTabs().clear();
 			
-			AnchorPane visitsTabContent = FXMLLoader.load(getClass().getResource("/application/resources/visitView.fxml"));
-			visitsTab.setContent(visitsTabContent);
+			// user is provider
+			if(mainClinic.getProviderStatus()) {
+				// TODO : change to providerAccountView.fxml
+				landingPane.getTabs().add(accountTab);
+				AnchorPane accountTabContent = FXMLLoader.load(getClass().getResource("/application/resources/patientAccountView.fxml"));
+				accountTab.setContent(accountTabContent);
+				
+				landingPane.getTabs().add(visitsTab);
+				AnchorPane visitsTabContent = FXMLLoader.load(getClass().getResource("/application/resources/visitView.fxml"));
+				visitsTab.setContent(visitsTabContent);
+				
+				landingPane.getTabs().add(messagesTab);
+				AnchorPane messagesTabContent = FXMLLoader.load(getClass().getResource("/application/resources/messageView.fxml"));
+				messagesTab.setContent(messagesTabContent);
+			}
 			
-			AnchorPane messagesTabContent = FXMLLoader.load(getClass().getResource("/application/resources/messageView.fxml"));
-			messagesTab.setContent(messagesTabContent);
-			
-			AnchorPane prescriptionsTabContent = FXMLLoader.load(getClass().getResource("/application/resources/prescriptionView.fxml"));
-			prescriptionsTab.setContent(prescriptionsTabContent);
+			// user is patient
+			else {
+				landingPane.getTabs().add(accountTab);
+				AnchorPane accountTabContent = FXMLLoader.load(getClass().getResource("/application/resources/patientAccountView.fxml"));
+				accountTab.setContent(accountTabContent);
+				
+				landingPane.getTabs().add(visitsTab);
+				AnchorPane visitsTabContent = FXMLLoader.load(getClass().getResource("/application/resources/visitView.fxml"));
+				visitsTab.setContent(visitsTabContent);
+				
+				landingPane.getTabs().add(messagesTab);
+				AnchorPane messagesTabContent = FXMLLoader.load(getClass().getResource("/application/resources/messageView.fxml"));
+				messagesTab.setContent(messagesTabContent);
+				
+				landingPane.getTabs().add(prescriptionsTab);
+				AnchorPane prescriptionsTabContent = FXMLLoader.load(getClass().getResource("/application/resources/prescriptionView.fxml"));
+				prescriptionsTab.setContent(prescriptionsTabContent);
+			}
 		}
 		catch (IOException e){
 			e.printStackTrace();
