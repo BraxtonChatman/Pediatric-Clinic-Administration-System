@@ -34,13 +34,15 @@ public class PatientAccountController {
 	
 	@FXML
 	public void showInfo() {
-		firstNameField.setText(currentPatient.getFirstName());
-		lastNameField.setText(currentPatient.getLastName());
-		birthdayPicker.setValue(LocalDate.parse(currentPatient.getBirthday()));
-		phoneNumberField.setText(currentPatient.getPhoneNumber());
-		emailAddressField.setText(currentPatient.getEmailAddress());
-		insuranceArea.setText(currentPatient.getInsurance());
-		pharmacyArea.setText(currentPatient.getPharmacy());
+		if (currentPatient != null) {
+			firstNameField.setText(currentPatient.getFirstName());
+			lastNameField.setText(currentPatient.getLastName());
+			birthdayPicker.setValue(LocalDate.parse(currentPatient.getBirthday()));
+			phoneNumberField.setText(currentPatient.getPhoneNumber());
+			emailAddressField.setText(currentPatient.getEmailAddress());
+			insuranceArea.setText(currentPatient.getInsurance());
+			pharmacyArea.setText(currentPatient.getPharmacy());
+		}
 	}
 	
 	public void setCurrentPatient(PatientAccount currentPatient) {

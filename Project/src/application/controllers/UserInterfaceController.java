@@ -82,10 +82,20 @@ public class UserInterfaceController {
 			AnchorPane prescriptionsTabContent = FXMLLoader.load(getClass().getResource("/application/resources/prescriptionView.fxml"));
 			prescriptionsTab.setContent(prescriptionsTabContent);
 			
+			// add listener to account tab for tab switching to restore fields
+			landingPane.getSelectionModel().selectedItemProperty().addListener((obs, oldTab, newTab) -> {
+				if(oldTab != null && accountTab.equals(oldTab)) {
+						patientAccountController.showInfo();
+				}	
+			});
+			
 		}
 		catch (IOException e){
 			e.printStackTrace();
 		}
+		
+		
+		
 	}
 	
 	public void setClinic(Clinic newClinic) {
@@ -117,6 +127,16 @@ public class UserInterfaceController {
 			landingPane.getTabs().add(prescriptionsTab);
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void loadTabContent(int x) {
 		try {
