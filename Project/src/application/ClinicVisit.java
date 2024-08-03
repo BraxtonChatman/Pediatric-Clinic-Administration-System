@@ -13,9 +13,9 @@ public class ClinicVisit {
 	private String visitDate;
 	private String visitTime;
 	private String reason;
-	private float height;
-	private float weight;
-	private float temperature;
+	private double height;
+	private double weight;
+	private double temperature;
 	private String bloodPressure;
 	private boolean atLeastTwelve;
 	private String allergies;
@@ -128,24 +128,24 @@ public class ClinicVisit {
 		this.reason = reason;
 	}
 	
-	public float getHeight() {
+	public double getHeight() {
 		return height;
 	}
-	public void setHeight(float height) {
+	public void setHeight(double height) {
 		this.height = height;
 	}
 	
-	public float getWeight() {
+	public double getWeight() {
 		return weight;
 	}
-	public void setWeight(float weight) {
+	public void setWeight(double weight) {
 		this.weight = weight;
 	}
 	
-	public float getTemperature() {
+	public double getTemperature() {
 		return temperature;
 	}
-	public void setTemperature(float temperature) {
+	public void setTemperature(double temperature) {
 		this.temperature = temperature;
 	}
 	

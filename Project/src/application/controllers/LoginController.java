@@ -47,19 +47,23 @@ public class LoginController {
 	private void loginButtonHandler(ActionEvent event) {
 		boolean successfulLogin = mainClinic.login(usernameField.getText(), passwordField.getText());
 		
+		// login successful 
 		if(successfulLogin) {
 			try {
 				// load UserInterface.fxml as the new scene
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/resources/UserInterface.fxml"));
 				Scene mainScene = new Scene(loader.load());
 				
-				// get pass mainClinic to UserInterfaceController, and load the tabs
+				// pass mainClinic to UserInterfaceController, and load the tabs
 				UserInterfaceController controller = loader.getController();
 				controller.setClinic(mainClinic);
 				controller.loadTabContent();
 				
+				// set stage
 				Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 				window.setScene(mainScene);
+				window.setWidth(800);
+				window.setHeight(630);
 				window.setX(200);
 				window.setY(10);
 				window.show();
@@ -68,6 +72,8 @@ public class LoginController {
 				e.printStackTrace();
 			}
 		}
+		
+		// on invalid login, prompt reattempt
 		else {
 			Alert loginError = new Alert(Alert.AlertType.ERROR);
 			loginError.setTitle("Login Error");

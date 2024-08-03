@@ -14,10 +14,13 @@ public class ProviderAccount {
 	
 	public ProviderAccount() {
 		this.providerId = "";
+		this.firstName = "";
+		this.lastName = "";
 		this.doctorStatus = false;
 	}
 	
 	public ProviderAccount(String newProviderId, boolean newDoctorStatus) {
+		this();
 		this.providerId = newProviderId;
 		this.doctorStatus = newDoctorStatus;
 	}

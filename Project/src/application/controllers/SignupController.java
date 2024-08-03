@@ -11,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class SignupController {
-
+	
 	@FXML
 	private void signinButtonHandler(ActionEvent event) {
 		try {
@@ -25,6 +25,11 @@ public class SignupController {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	private void createButtonHandler(ActionEvent event) {
+		
 	}
 	
 }
