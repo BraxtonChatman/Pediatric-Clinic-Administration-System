@@ -120,6 +120,7 @@ public class UserInterfaceController {
 			// add account tab, and fill entries based on user account data from clinic
 			landingPane.getTabs().add(accountTab);
 			patientAccountController.setCurrentPatient(mainClinic.viewPatientSelf());
+			patientAccountController.setClinic(mainClinic);
 			patientAccountController.showInfo();
 			
 			landingPane.getTabs().add(visitsTab);

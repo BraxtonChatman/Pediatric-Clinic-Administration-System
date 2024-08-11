@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="accountAnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.PatientAccountController">
    <children>
-      <Button fx:id="saveButton" layoutX="597.6666666666666" layoutY="420.0" mnemonicParsing="false" text="Save" AnchorPane.leftAnchor="597.6666666666666" AnchorPane.topAnchor="420.0" />
+      <Button fx:id="saveButton" layoutX="597.6666666666666" layoutY="420.0" mnemonicParsing="false" onAction="#saveButtonHandler" text="Save" AnchorPane.leftAnchor="597.6666666666666" AnchorPane.topAnchor="420.0" />
       <Label fx:id="firstNameLabel" layoutX="10.0" layoutY="88.0" text="First Name:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="60.0" />
       <Label fx:id="birthdayLabel" layoutX="10.0" layoutY="182.0" text="Date of Birth:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="140.0" />
       <Label fx:id="phoneNumberLabel" layoutX="10.0" layoutY="266.0" text="Phone Number:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="220.0" />
