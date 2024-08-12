@@ -2,7 +2,6 @@ package application.controllers;
 
 import application.Clinic;
 import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +16,7 @@ public class UserInterfaceController {
 
 	private Clinic mainClinic;
 	private PatientAccountController patientAccountController;
+	private VisitController visitController;
 	
 	@FXML
 	private TabPane landingPane;
@@ -33,6 +33,11 @@ public class UserInterfaceController {
 	@FXML
 	private Tab prescriptionsTab;
 	
+	/**
+	 * signoutButtonHandler calls the Clinic.logout method to update the current signed
+	 * in user to the default logged out value, and returns the UI to the login view
+	 * @param event
+	 */
 	@FXML
 	private void signoutButtonHandler(ActionEvent event) {
 		// run logout tasks for the Clinic object
@@ -61,6 +66,11 @@ public class UserInterfaceController {
 		
 	}
 	
+	/**
+	 * initialize loads the fxml files for the account, visits, messages, and prescriptions
+	 * tabs, and adds a listener to UserInterface for tab switching to restore fill the fields
+	 * on the account tab if changes were made to them that weren't saved.
+	 */
 	@FXML
 	private void initialize() {
 		try {
@@ -71,7 +81,9 @@ public class UserInterfaceController {
 			accountTab.setContent(accountTabContent);
 			
 			// visits tab
-			AnchorPane visitsTabContent = FXMLLoader.load(getClass().getResource("/application/resources/visitView.fxml"));
+			FXMLLoader visitLoader = new FXMLLoader(getClass().getResource("/application/resources/visitView.fxml"));
+			AnchorPane visitsTabContent = visitLoader.load();
+			visitController = visitLoader.getController();			
 			visitsTab.setContent(visitsTabContent);
 			
 			// messages tab
@@ -93,19 +105,13 @@ public class UserInterfaceController {
 		catch (IOException e){
 			e.printStackTrace();
 		}
-		
-		
-		
 	}
 	
-	public void setClinic(Clinic newClinic) {
-		this.mainClinic = newClinic;
-	}
-	
-	public void setPatientAccountController(PatientAccountController newController) {
-		this.patientAccountController = newController;
-	}
-	
+	/**
+	 * loadTabContent adds tabs to the UserInterface depending on the user type.
+	 * If the user is a provider, then the visits and messages tabs are shown. If
+	 * the user is a patient, then the account, visits, messages, and prescriptions tabs are shown.
+	 */
 	public void loadTabContent() {
 		landingPane.getTabs().clear();
 		
@@ -124,67 +130,21 @@ public class UserInterfaceController {
 			patientAccountController.showInfo();
 			
 			landingPane.getTabs().add(visitsTab);
+			visitController.setUserVisits(mainClinic.viewVisits());
+			visitController.setProviderAccounts(mainClinic.viewProviders());
+			visitController.setToLists();
+			
 			landingPane.getTabs().add(messagesTab);
 			landingPane.getTabs().add(prescriptionsTab);
 		}
 	}
 	
+	public void setClinic(Clinic newClinic) {
+		this.mainClinic = newClinic;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public void loadTabContent(int x) {
-		try {
-			landingPane.getTabs().clear();
-			
-			// user is provider
-			if(mainClinic.getProviderStatus()) {			
-				landingPane.getTabs().add(visitsTab);
-				AnchorPane visitsTabContent = FXMLLoader.load(getClass().getResource("/application/resources/visitView.fxml"));
-				visitsTab.setContent(visitsTabContent);
-				
-				landingPane.getTabs().add(messagesTab);
-				AnchorPane messagesTabContent = FXMLLoader.load(getClass().getResource("/application/resources/messageView.fxml"));
-				messagesTab.setContent(messagesTabContent);
-			}
-			
-			// user is patient
-			else {
-				// account tab
-				landingPane.getTabs().add(accountTab);
-				FXMLLoader accountLoader = new FXMLLoader(getClass().getResource("/application/resources/patientAccountView.fxml"));
-				AnchorPane accountTabContent = accountLoader.load();
-				PatientAccountController patientAccountController = accountLoader.getController();
-				patientAccountController.setCurrentPatient(mainClinic.viewPatientSelf());
-				patientAccountController.showInfo();
-				accountTab.setContent(accountTabContent);
-				
-				
-				// visits tab
-				landingPane.getTabs().add(visitsTab);
-				AnchorPane visitsTabContent = FXMLLoader.load(getClass().getResource("/application/resources/visitView.fxml"));
-				visitsTab.setContent(visitsTabContent);
-				
-				// messages tab
-				landingPane.getTabs().add(messagesTab);
-				AnchorPane messagesTabContent = FXMLLoader.load(getClass().getResource("/application/resources/messageView.fxml"));
-				messagesTab.setContent(messagesTabContent);
-				
-				// prescriptions tab
-				landingPane.getTabs().add(prescriptionsTab);
-				AnchorPane prescriptionsTabContent = FXMLLoader.load(getClass().getResource("/application/resources/prescriptionView.fxml"));
-				prescriptionsTab.setContent(prescriptionsTabContent);
-			}
-		}
-		catch (IOException e){
-			e.printStackTrace();
-		}
+	public void setPatientAccountController(PatientAccountController newController) {
+		this.patientAccountController = newController;
 	}
 
 }

@@ -14,13 +14,17 @@ import javafx.scene.Scene;
  */
 public class Main extends Application {
 	
+	// Clinic is main object used throughout program
 	private Clinic mainClinic = new Clinic();
 	
+	/**
+	 * start method loads the initial login view and passes mainClinic to its controller
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {		
 			
-			this.writeTestData();
+			//this.writeTestData();
 			
 			// load loginView.fxml for initial scene
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/loginView.fxml"));
@@ -129,7 +133,7 @@ public class Main extends Application {
 		pat1Vis1.setPatientId("patient1");
 		pat1Vis1.setProviderId("doctor1");
 		pat1Vis1.setVisitId(1);
-		pat1Vis1.setVisitDate("08/01/2023");
+		pat1Vis1.setVisitDate("2023-08-01");
 		pat1Vis1.setVisitTime("12:00 PM");
 		pat1Vis1.setReason("New Patient Visit");
 		pat1Vis1.setHeight(120.2);
@@ -146,7 +150,7 @@ public class Main extends Application {
 		pat1Vis2.setPatientId("patient1");
 		pat1Vis2.setProviderId("doctor2");
 		pat1Vis2.setVisitId(3);
-		pat1Vis2.setVisitDate("07/20/2024");
+		pat1Vis2.setVisitDate("2025-07-20");
 		pat1Vis2.setVisitTime("12:30 PM");
 		pat1Vis2.setReason("Regular Physical");
 		pat1Vis2.setHeight(120.2);
@@ -159,12 +163,46 @@ public class Main extends Application {
 		pat1Vis2.setExamSummary("Patient had concerns about recent weight gain, but no problems were found");
 		pat1Vis2.setPrescriptions("No Prescriptions");
 		
+		ClinicVisit pat1Vis3 = new ClinicVisit();
+		pat1Vis3.setPatientId("patient1");
+		pat1Vis3.setProviderId("doctor2");
+		pat1Vis3.setVisitId(5);
+		pat1Vis3.setVisitDate("2024-07-20");
+		pat1Vis3.setVisitTime("12:30 PM");
+		pat1Vis3.setReason("Regular Physical");
+		pat1Vis3.setHeight(120.2);
+		pat1Vis3.setWeight(140.9);
+		pat1Vis3.setTemperature(99.2);
+		pat1Vis3.setBloodPressure("140/70");
+		pat1Vis3.setAtLeastTwelve(true);
+		pat1Vis3.setAllergies("Seasonal Allergies");
+		pat1Vis3.setConcerns("Weight Gain");
+		pat1Vis3.setExamSummary("Patient had concerns about recent weight gain, but no problems were found");
+		pat1Vis3.setPrescriptions("No Prescriptions");
+		
+		ClinicVisit pat1Vis4 = new ClinicVisit();
+		pat1Vis4.setPatientId("patient1");
+		pat1Vis4.setProviderId("doctor2");
+		pat1Vis4.setVisitId(6);
+		pat1Vis4.setVisitDate("2024-07-20");
+		pat1Vis4.setVisitTime("12:30 PM");
+		pat1Vis4.setReason("Regular Physical");
+		pat1Vis4.setHeight(120.2);
+		pat1Vis4.setWeight(140.9);
+		pat1Vis4.setTemperature(99.2);
+		pat1Vis4.setBloodPressure("140/70");
+		pat1Vis4.setAtLeastTwelve(true);
+		pat1Vis4.setAllergies("Seasonal Allergies");
+		pat1Vis4.setConcerns("Weight Gain");
+		pat1Vis4.setExamSummary("Patient had concerns about recent weight gain, but no problems were found");
+		pat1Vis4.setPrescriptions("No Prescriptions");
+		
 		// create visits for patient 2
 		ClinicVisit pat2Vis1 = new ClinicVisit();
 		pat2Vis1.setPatientId("patient2");
 		pat2Vis1.setProviderId("doctor2");
 		pat2Vis1.setVisitId(2);
-		pat2Vis1.setVisitDate("07/20/2024");
+		pat2Vis1.setVisitDate("2024-07-20");
 		pat2Vis1.setVisitTime("09:30 PM");
 		pat2Vis1.setReason("Regular Physical");
 		pat2Vis1.setHeight(100.2);
@@ -180,8 +218,8 @@ public class Main extends Application {
 		ClinicVisit pat2Vis2 = new ClinicVisit();
 		pat2Vis2.setPatientId("patient2");
 		pat2Vis2.setProviderId("doctor2");
-		pat2Vis2.setVisitId(2);
-		pat2Vis2.setVisitDate("07/24/2024");
+		pat2Vis2.setVisitId(4);
+		pat2Vis2.setVisitDate("2024-07-24");
 		pat2Vis2.setVisitTime("10:15 PM");
 		pat2Vis2.setReason("Severe chest pain");
 		pat2Vis2.setHeight(101.2);
@@ -228,6 +266,8 @@ public class Main extends Application {
 		mainClinic.writeLogin(logNur2);
 		mainClinic.writeVisit(pat1Vis1);
 		mainClinic.writeVisit(pat1Vis2);
+		mainClinic.writeVisit(pat1Vis3);
+		mainClinic.writeVisit(pat1Vis4);
 		mainClinic.writeVisit(pat2Vis1);
 		mainClinic.writeVisit(pat2Vis2);
 		

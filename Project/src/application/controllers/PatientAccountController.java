@@ -2,7 +2,6 @@ package application.controllers;
 
 import java.time.LocalDate;
 import java.util.Optional;
-
 import application.Clinic;
 import application.PatientAccount;
 import javafx.fxml.FXML;
@@ -39,9 +38,14 @@ public class PatientAccountController {
 	@FXML
 	private TextArea pharmacyArea;
 	
+	/**
+	 * saveButtonHandler displays a confirmation prompt, and on confirmation
+	 * the values of the current patient user are changed to those stored in
+	 * the text fields, text areas, and date picker, and are written to the
+	 * patient file as well.
+	 */
 	@FXML
 	private void saveButtonHandler() {
-		
 		Alert saveConfirm = new Alert(Alert.AlertType.CONFIRMATION);
 		saveConfirm.setTitle("Confirm Account Changes");
 		saveConfirm.setHeaderText(null);
@@ -63,6 +67,10 @@ public class PatientAccountController {
 		}	
 	}
 	
+	/**
+	 * showInfo sets the values of the text field, text areas, and date picker
+	 * to display those of the current patient user
+	 */
 	@FXML
 	public void showInfo() {
 		if (currentPatient != null) {
@@ -83,4 +91,5 @@ public class PatientAccountController {
 	public void setCurrentPatient(PatientAccount currentPatient) {
 		this.currentPatient = currentPatient;
 	}
+	
 }

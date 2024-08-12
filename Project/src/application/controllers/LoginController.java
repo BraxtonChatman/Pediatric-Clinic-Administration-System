@@ -1,7 +1,6 @@
 package application.controllers;
 
 import java.io.IOException;
-
 import application.Clinic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,11 +22,10 @@ public class LoginController {
 	@FXML
 	private TextField passwordField;
 	
-	
-	public void setClinic(application.Clinic newClinic) {
-		this.mainClinic = newClinic;
-	}
-	
+	/**
+	 * signupButtonHandler loads the view for the signup page and switches to it
+	 * @param event
+	 */
 	@FXML
 	private void signupButtonHandler(ActionEvent event) {
 		try {
@@ -43,6 +41,12 @@ public class LoginController {
 		}
 	}
 	
+	/**
+	 * loginButtonHandler calls the Clinic.login method with the input parameters from the user
+	 * to validate login. If user entered credentials are valid, then the main UserInterface
+	 * is loaded. If not, the user is prompted to retry login.
+	 * @param event
+	 */
 	@FXML
 	private void loginButtonHandler(ActionEvent event) {
 		boolean successfulLogin = mainClinic.login(usernameField.getText(), passwordField.getText());
@@ -85,4 +89,7 @@ public class LoginController {
 
 	}
 	
+	public void setClinic(application.Clinic newClinic) {
+		this.mainClinic = newClinic;
+	}
 }
