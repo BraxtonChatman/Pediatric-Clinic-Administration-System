@@ -17,6 +17,7 @@ public class UserInterfaceController {
 	private Clinic mainClinic;
 	private PatientAccountController patientAccountController;
 	private VisitController visitController;
+	private PrescriptionController prescriptionController;
 	
 	@FXML
 	private TabPane landingPane;
@@ -91,7 +92,9 @@ public class UserInterfaceController {
 			messagesTab.setContent(messagesTabContent);
 			
 			// prescriptions tab
-			AnchorPane prescriptionsTabContent = FXMLLoader.load(getClass().getResource("/application/resources/prescriptionView.fxml"));
+			FXMLLoader prescriptionLoader = new FXMLLoader(getClass().getResource("/application/resources/prescriptionView.fxml"));
+			AnchorPane prescriptionsTabContent = prescriptionLoader.load();
+			prescriptionController = prescriptionLoader.getController();			
 			prescriptionsTab.setContent(prescriptionsTabContent);
 			
 			// add listener to account tab for tab switching to restore fields
@@ -135,7 +138,11 @@ public class UserInterfaceController {
 			visitController.setToLists();
 			
 			landingPane.getTabs().add(messagesTab);
+			
 			landingPane.getTabs().add(prescriptionsTab);
+			prescriptionController.setUserVisits(mainClinic.viewVisits());
+			prescriptionController.setProviderAccounts(mainClinic.viewProviders());
+			prescriptionController.setToList();
 		}
 	}
 	
