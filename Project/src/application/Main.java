@@ -233,6 +233,49 @@ public class Main extends Application {
 		pat2Vis2.setPrescriptions("Aspirin, 15mg, daily");
 		
 		
+		// create messages
+		ClinicMessage mes1 = new ClinicMessage();
+		mes1.setPatientId("patient1");
+		mes1.setProviderId("doctor1");
+		mes1.setMessageId(1);
+		mes1.setPatientIsSender(true);
+		mes1.setClinicMessage("Hello, I was wondering if I could schedule a visit");
+		
+		ClinicMessage mes2 = new ClinicMessage();
+		mes2.setPatientId("patient1");
+		mes2.setProviderId("doctor1");
+		mes2.setMessageId(2);
+		mes2.setPatientIsSender(false);
+		mes2.setClinicMessage("Yes, we can see you");
+		
+		ClinicMessage mes3 = new ClinicMessage();
+		mes3.setPatientId("patient1");
+		mes3.setProviderId("doctor1");
+		mes3.setMessageId(3);
+		mes3.setPatientIsSender(true);
+		mes3.setClinicMessage("Great! When can I come in for a visit? When is the next available opening? I should also say my preference would be a Thursday, Friday, or Saturday");
+		
+		ClinicMessage mes4 = new ClinicMessage();
+		mes4.setPatientId("patient1");
+		mes4.setProviderId("doctor2");
+		mes4.setMessageId(4);
+		mes4.setPatientIsSender(true);
+		mes4.setClinicMessage("I have a question I would like to get a second opinion on. I have seen several doctors about this issue, but I have heard conflicting information. Would you please help me?");
+		
+		ClinicMessage mes5 = new ClinicMessage();
+		mes5.setPatientId("patient2");
+		mes5.setProviderId("doctor2");
+		mes5.setMessageId(5);
+		mes5.setPatientIsSender(false);
+		mes5.setClinicMessage("Your prescription has been refilled");
+		
+		ClinicMessage mes6 = new ClinicMessage();
+		mes6.setPatientId("patient2");
+		mes6.setProviderId("doctor2");
+		mes6.setMessageId(6);
+		mes6.setPatientIsSender(true);
+		mes6.setClinicMessage("Thank you");
+		
 		// add data to mainClinic
 		mainClinic.addPatient(pat1);
 		mainClinic.addPatient(pat2);
@@ -250,6 +293,12 @@ public class Main extends Application {
 		mainClinic.addVisit(pat1Vis2);
 		mainClinic.addVisit(pat2Vis1);
 		mainClinic.addVisit(pat2Vis2);
+		mainClinic.addMessage(mes1);
+		mainClinic.addMessage(mes2);
+		mainClinic.addMessage(mes3);
+		mainClinic.addMessage(mes4);
+		mainClinic.addMessage(mes5);
+		mainClinic.addMessage(mes6);
 		
 		// write data to file system
 		mainClinic.writePatientAccount(pat1);
@@ -270,7 +319,12 @@ public class Main extends Application {
 		mainClinic.writeVisit(pat1Vis4);
 		mainClinic.writeVisit(pat2Vis1);
 		mainClinic.writeVisit(pat2Vis2);
-		
+		mainClinic.writeMessage(mes1);
+		mainClinic.writeMessage(mes2);
+		mainClinic.writeMessage(mes3);
+		mainClinic.writeMessage(mes4);
+		mainClinic.writeMessage(mes5);
+		mainClinic.writeMessage(mes6);
 		
 	}
 }

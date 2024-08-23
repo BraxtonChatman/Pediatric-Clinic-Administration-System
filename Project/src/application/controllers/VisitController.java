@@ -6,6 +6,7 @@ import application.ClinicVisit;
 import application.ProviderAccount;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 
@@ -63,6 +64,15 @@ public class VisitController {
 		}
 		upcomingListView.setItems(visitItemsUpcoming);
 		pastListView.setItems(visitItemsPast);
+	}
+
+	/**
+	 * schedule visit allows the user to make a selection TODO
+	 * @param event
+	 */
+	@FXML
+	private void scheduleVisitButtonHandler(ActionEvent event) {
+		
 	}
 	
 	public void setUserVisits(ArrayList<ClinicVisit> newVisits) {

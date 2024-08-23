@@ -204,16 +204,17 @@ public class Clinic {
 			String patientId = dataValues[1];
 			String providerId = dataValues[2];
 			boolean urgent = Boolean.parseBoolean(dataValues[3]);
+			boolean patientSender = Boolean.parseBoolean(dataValues[4]);
 
 			// concatenate strings if message includes newlines
 			StringBuilder concatenatedString = new StringBuilder();
-			for(int i=4; i<dataValues.length; i++) {
+			for(int i=5; i<dataValues.length; i++) {
 				concatenatedString.append(dataValues[i]);
 			}
 			String message = concatenatedString.toString();
 			
 			// create new ClinicMessage object and add it to Clinic.messages
-			ClinicMessage newMessage = new ClinicMessage(messageId, patientId, providerId, urgent, message);			
+			ClinicMessage newMessage = new ClinicMessage(messageId, patientId, providerId, urgent, patientSender, message);			
 			this.messages.add(newMessage);			
 		}
 		catch(IOException e) {
@@ -393,6 +394,7 @@ public class Clinic {
 		concatenateStrings.append(messageToWrite.getPatientId() + "\n");
 		concatenateStrings.append(messageToWrite.getProviderId() + "\n");
 		concatenateStrings.append(messageToWrite.isUrgent() + "\n");
+		concatenateStrings.append(messageToWrite.isPatientSender() + "\n");
 		concatenateStrings.append(messageToWrite.getClinicMessage());
 		String dataToWrite = concatenateStrings.toString();
 		 
@@ -803,6 +805,32 @@ public class Clinic {
 		return retrieveMessages;
 	}
 
+	/**
+	 * returns a list of all messages involving the currently signed in user
+	 * @return
+	 */
+	public ArrayList<ClinicMessage> viewMessages(){
+ArrayList<ClinicMessage> retrieveMessages = new ArrayList<>();
+		
+		// user is a provider
+		if(this.providerStatus) {
+			for(ClinicMessage checkMessage : this.messages) {
+				if(checkMessage.getProviderId().equals(this.currentUser)) 
+					retrieveMessages.add(checkMessage);
+			}
+		}
+		
+		// user is a patient
+		else {
+			for(ClinicMessage checkMessage : this.messages) {
+				if(checkMessage.getPatientId().equals(this.currentUser)) 
+					retrieveMessages.add(checkMessage);
+			}
+		}
+		
+		return retrieveMessages;
+	}
+	
 	/**
 	 * updatePatient accepts a PatientAccount object, finds the patient in
 	 * Clinic.patients with a matching patientId, and changes it to the input

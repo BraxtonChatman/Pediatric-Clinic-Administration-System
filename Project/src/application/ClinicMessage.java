@@ -11,6 +11,7 @@ public class ClinicMessage {
 	private String patientId;
 	private String providerId;
 	private boolean urgency;
+	private boolean patientIsSender;
 	private String clinicMessage;
 	
 	
@@ -19,6 +20,7 @@ public class ClinicMessage {
 		this.patientId = "";
 		this.providerId = "";
 		this.urgency = false;
+		this.patientIsSender = true;
 		this.clinicMessage = "";
 	}
 	
@@ -38,11 +40,12 @@ public class ClinicMessage {
 		this.urgency = newUrgency;
 	}
 	
-	public ClinicMessage(int messageId, String patientId, String providerId, boolean newUrgency, String newMessage) {
+	public ClinicMessage(int messageId, String patientId, String providerId, boolean newUrgency, boolean newSender, String newMessage) {
 		this.messageId = messageId;
 		this.patientId = patientId;
 		this.providerId = providerId;
 		this.urgency = newUrgency;
+		this.patientIsSender = newSender;
 		this.clinicMessage = newMessage;
 	}
 	
@@ -78,6 +81,14 @@ public class ClinicMessage {
 		this.clinicMessage = clinicMessage;
 	}
 
+	public boolean isPatientSender() {
+		return this.patientIsSender;
+	}
+	
+	public void setPatientIsSender(boolean newPatient) {
+		this.patientIsSender = newPatient;
+	}
+	
 	public boolean isUrgent() {
 		return urgency;
 	}

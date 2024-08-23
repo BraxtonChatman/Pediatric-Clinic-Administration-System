@@ -29,7 +29,7 @@ public class PrescriptionController {
 		// iterate through list of patient visits for any indicated prescriptions
 		for(ClinicVisit x : userVisits) {
 			providerName = "";
-			if(x.getPrescriptions() != null && x.getPrescriptions() != "") {
+			if(x.getPrescriptions() != null && x.getPrescriptions() != "" && !x.getPrescriptions().equals("None")) {
 				// get the name of the prescribing doctor
 				for(ProviderAccount provider : providerList) {
 					if(provider.getProviderId().equals(x.getProviderId())) {

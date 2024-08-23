@@ -1,6 +1,7 @@
 package application.controllers;
 
 import application.Clinic;
+
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ public class UserInterfaceController {
 	private Clinic mainClinic;
 	private PatientAccountController patientAccountController;
 	private VisitController visitController;
+	private MessageController messageController;
 	private PrescriptionController prescriptionController;
 	
 	@FXML
@@ -88,8 +90,14 @@ public class UserInterfaceController {
 			visitsTab.setContent(visitsTabContent);
 			
 			// messages tab
-			AnchorPane messagesTabContent = FXMLLoader.load(getClass().getResource("/application/resources/messageView.fxml"));
+			FXMLLoader messageLoader = new FXMLLoader(getClass().getResource("/application/resources/messageView.fxml"));
+			AnchorPane messagesTabContent = messageLoader.load();
+			messageController = messageLoader.getController();			
 			messagesTab.setContent(messagesTabContent);
+			
+			// TODO: delete these after verifying works
+			//AnchorPane messagesTabContent = FXMLLoader.load(getClass().getResource("/application/resources/messageView.fxml"));
+			//messagesTab.setContent(messagesTabContent);
 			
 			// prescriptions tab
 			FXMLLoader prescriptionLoader = new FXMLLoader(getClass().getResource("/application/resources/prescriptionView.fxml"));
@@ -138,6 +146,11 @@ public class UserInterfaceController {
 			visitController.setToLists();
 			
 			landingPane.getTabs().add(messagesTab);
+			messageController.setUserMessages(mainClinic.viewMessages());
+			messageController.setPatientAccounts(mainClinic.viewPatients());
+			messageController.setProviderAccounts(mainClinic.viewProviders());
+			messageController.setProviderStatus(mainClinic.getProviderStatus());
+			messageController.setToList();
 			
 			landingPane.getTabs().add(prescriptionsTab);
 			prescriptionController.setUserVisits(mainClinic.viewVisits());
